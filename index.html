@@ -1,0 +1,347 @@
+<!DOCTYPE html>     
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APRIL</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e3f2fd;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: #1976d2;
+      padding: 10px 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      overflow-x: auto;   /* allow scroll if too small */
+      white-space: nowrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: nowrap;  /* keep in one line */
+    }
+
+    nav ul li {
+      display: inline-block;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: color 0.3s;
+      padding: 5px 10px;
+      display: inline-block;
+    }
+
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* Sections */
+    section {
+      display: none; 
+      padding: 20px 15px;
+      max-width: 700px;
+      margin: 20px auto;
+      animation: fadeIn 0.6s ease-in-out;
+      border-radius: 10px;
+      box-shadow: none;
+    }
+
+    section.active {
+      display: block;     
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Header */
+    .section-header {
+      background-color: #42a5f5; 
+      color: white; 
+      text-align: center;
+      padding: 6px 10px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-header h1, 
+    .section-header h2 {
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+
+    .section-header p {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    /* Home image */
+    .image-container {
+      text-align: center;
+      margin: 20px auto;
+      max-width: 380px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Profile Layout */
+    .profile-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .profile-text {
+      flex: 2;
+    }
+
+    .profile-section {
+      margin-bottom: 15px;
+    }
+
+    .profile-section h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: #1976d2;
+      border-bottom: 2px solid #1976d2;
+      display: inline-block;
+      padding-bottom: 2px;
+    }
+
+    .profile-text p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .profile-pic {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .profile-pic img {
+      width: 140px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* About section */
+    #about .about-content p {
+      font-size: 16px;
+      color: #333; 
+      line-height: 1.5;
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    /* Gallery */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+
+    .gallery-item {
+      text-align: center;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.01);
+    }
+
+    .gallery-item p {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: #1976d2;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a onclick="showSection('home')">HOME</a></li>
+      <li><a onclick="showSection('profile')">PROFILE</a></li>
+      <li><a onclick="showSection('about')">ABOUT</a></li>
+      <li><a onclick="showSection('gallery')">GALLERY</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="active">
+    <div class="section-header">
+      <h1>WELCOME TO EYRILL'S BLOG!</h1>
+      <p>Join me as I share stories, ideas, and experiences.</p>
+    </div>
+    <div class="image-container">
+      <img src="images/MAIN.jpeg" alt="Main Picture">
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section id="profile">
+    <div class="section-header">
+      <h2>PROFILE</h2>
+      <p>Get to know me more</p>
+    </div>
+
+    <div class="profile-container">
+      <div class="profile-text">
+        <div class="profile-section">
+          <h3>Basic Info</h3>
+          <p><b>Name:</b> April Joy V. Rapanut</p>
+          <p><b>Age:</b> 20</p>
+          <p><b>Birthday:</b> April 03, 2005</p>
+          <p><b>Address:</b> Sta. Maria, Ilocos Sur</p>
+        </div>
+
+        <div class="profile-section">
+          <h3>Family</h3>
+          <p><b>Father:</b> Cesar D. Rapanut</p>
+          <p><b>Mother:</b> Luz V. Rapanut</p>
+          <p><b>Siblings:</b> Ceasar James V. Rapanut</p>
+        </div>
+
+        <div class="profile-section">
+          <h3>Education</h3>
+          <p><b>School:</b> Ilocos Sur Polytechnic State College (ISPSC)</p>
+          <p><b>Course:</b> Bachelor of Science in Information Systems</p>
+        </div>
+      </div>
+
+      <div class="profile-pic">
+        <img src="images/profile.jpg" alt="Profile Picture">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-header">
+      <h2>ABOUT</h2>
+      <p>A little peek into the system maker</p>
+    </div>
+    <div class="about-content">
+      <p>Hi! I'm <b>April Joy V. Rapanut</b>. I may be 20 but still act like a child sometimes. You can find me in Nagtupacan, Sta. Maria Ilocos Sur or at our church, 
+	which has always been my second home.</p>
+
+      <p>My <b>Hobbies</b> Reading, watching anime, sketching, writing, and capturing beautiful photos. These simple passions help me escape reality sometimes.</p>
+
+      <p>Outside the church, you'll find me diving into novels, exploring sceneries with my camera, and letting my imagination flow through sketching.
+	I also enjoy writing random thoughts and reflections sometimes personal, sometimes just dreamy ideas about life.</p>
+
+      <p>I value <b>my parents, brother, and closest friends</b> inspire me to keep going, even during the hardest times. 
+	I believe life is better when shared with the people you love.</p>
+
+      <p>As a student of <b>Bachelor of Science in Information Systems</b>, I enjoy reading books and imagining how innovations can shape the future.</p>
+
+      <p>I <b>dream</b> of traveling the world, experiencing different cultures, capturing breathtaking sunsets, and writing my journey in my diary. 
+	I also hope to build a career in technology where I can create something useful, but at the same time live a life filled with faith and creativity.</p>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <div class="section-header">
+      <h2>GALLERY</h2>
+      <p>Here’s some of my journey and collection of my favorite pictures</p>
+    </div>
+    <div class="gallery-container">
+      <div class="gallery-item">
+        <p>Favorites sunset pics</p>
+        <img src="images/GALLERY1.webp" alt="Photography 1">
+      </div>
+      <div class="gallery-item">
+        <p>Picture with Altar Fam</p>
+        <img src="images/GALLERY3.webp" alt="Photography 2">
+      </div>
+      <div class="gallery-item">
+        <p>Fav ME pics </p>
+        <img src="images/GALLERY5.webp" alt="Fav People 3">
+      </div>
+      <div class="gallery-item">
+        <p>Sunset pictures</p>
+        <img src="images/GALLERY2.webp" alt="Fav People 4">
+      </div>
+      <div class="gallery-item">
+        <p>Favorite Peeps </p>
+        <img src="images/GALLERY4.webp" alt="Church 5">
+      </div>
+      <div class="gallery-item">
+        <p>Random pics</p>
+        <img src="images/GALLERY6.webp" alt="Church 6">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 April Joy Rapanut</p>
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => {
+        sec.classList.remove("active");
+      });
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
+</body>
+</html>
